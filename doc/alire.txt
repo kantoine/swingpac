@@ -19,7 +19,7 @@ l'emporte le plus souvent sur les 3 classes livrées avec le modèle.
 Les nouvelles classes seront obligatoirement placées dans un package particuler 
  => voir la constante PACKAGE_BIDULES de la classe FentreMain
 
-Contrainte : Attention, un bidule ne peut se déplacer que pixel par pixel. 
+Contrainte : Attention, un bidu  le ne peut se déplacer que pixel par pixel. 
              Le développeur ne devra pas utiliser les fonctions de déplacement 
              de l'API Swing/swt (setLocation, setBounds, setX, etc...) 
 
