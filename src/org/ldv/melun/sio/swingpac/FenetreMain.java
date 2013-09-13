@@ -1,6 +1,8 @@
 package org.ldv.melun.sio.swingpac;
 
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -112,8 +114,10 @@ public class FenetreMain extends JFrame implements ActionListener {
     mnItemQuitter.addActionListener(this);
 
     // TODO : définir une taille en fonction de la taille de l'écran
-    // par exemple le 1/4 de l'écran pour des grands écrans, ou 1/2 ...
-    setSize(500, 500);
+    // par exemple le 1/4 de l'écran pour des grands écrans, ou 1/2 ..
+    Toolkit t = Toolkit.getDefaultToolkit();
+    Dimension d = t.getScreenSize(); 
+    setSize(d.width/3,d.height/3);
 
   }
 

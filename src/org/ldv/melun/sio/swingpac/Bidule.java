@@ -61,14 +61,20 @@ public class Bidule extends JPanel {
 
   final int DELAYMAX = 10;
 
-  final int DELAYMIN = 5;
+  //kevin le connard!!
+  
+  
+  final int DELAYMIN = 5 ;
 
   final int DELAY;
 
   /**
    * dimension minimale considérant un bidule en vie
    */
+ 
   final int NB_MINMAL_PIXELS_VIE = 3;
+
+
 
   /**
    * Déclaration du Template/Hook
@@ -168,22 +174,37 @@ public class Bidule extends JPanel {
    * appelé après un déplacement. Vérifie si impacts, et préviens les objets
    * touchés.
    */
+  private int nombreimpact=0;
+  
   private void manageCollisions() {
     // ai-je touché d'autres bidules ?
     List<Bidule> bidules = getCollisions();
     for (Bidule bidule : bidules) {
       if (bidule.isGoDown()
-          && bidule.getY() + bidule.getHeight() >= this.getY())
+          && bidule.getY() + bidule.getHeight() >= this.getY()){
         bidule.tuEstouchePar(this);
+      	 nombreimpact++;
+          }
       else if (bidule.isGoUp()
           && bidule.getY() <= this.getY() + this.getHeight())
+      {
         bidule.tuEstouchePar(this);
+      this.nombreimpact++;}
       else if (bidule.isGoRight()
           && bidule.getX() + bidule.getWidth() >= this.getX())
+      {
         bidule.tuEstouchePar(this);
+        this.nombreimpact++;
+        }
       else if (bidule.isGoLeft()
           && bidule.getX() <= this.getWidth() + this.getX())
+      {
         bidule.tuEstouchePar(this);
+        this.nombreimpact++;
+        }
+      if (nombreimpact==80){
+    	  this.setBounds(getX() +incX, getY()+incY, getWidth()+50, getHeight()+50);
+      }
     }
   }
 
@@ -195,12 +216,12 @@ public class Bidule extends JPanel {
     // le vainqueur est celui qui reste seul
     if (aloneInTheWorld()) {
       timer.stop();
-      JOptionPane.showMessageDialog(getParent(), "GAGNÉ : " + name);
+      JOptionPane.showMessageDialog(getParent(), "GAGNÉ : " + name + "vous avez touchez : "+ nombreimpact+ "fois");
       getParent().remove(this);
     }
   }
 
-  /**
+  /**nombreimpact++;
    * Détermine si l'objet courant est seul dans la scene
    * 
    * @return true si aucun autre objet de type Bidule ne partage la scene avec
